@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1f6fa8">
-<title>Saint-Jacut Kite V18 · TNT Kiteboards</title>
+<title>Saint-Jacut Kite V20 · TNT Kiteboards</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
@@ -65,6 +65,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--card);color:var(--text)}
 .legendbox{position:absolute;z-index:500;bottom:10px;left:10px;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);padding:8px 10px;border-radius:10px;border:1px solid rgba(0,0,0,.1);font-size:12px;line-height:1.35;color:#18202a}
 .leaflet-control-attribution{font-size:10px}
+.water-overlay{filter:blur(.8px);image-rendering:auto;}
 
 .basemap-switch{display:flex;background:rgba(255,255,255,.94);border:1px solid rgba(0,0,0,.18);border-radius:9px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.22)}
 .basemap-switch button{appearance:none;border:0;border-right:1px solid rgba(0,0,0,.14);background:transparent;color:#18202a;padding:8px 10px;font:600 12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer;line-height:1}
@@ -124,7 +125,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   <span id="anomVal" hidden></span>
   <div class="muted" style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Application</div>
   <div style="font-size:20px;font-weight:800;line-height:1.2;margin-bottom:2px">Saint-Jacut Kite</div>
-  <div class="muted" style="margin-bottom:14px">Version V18</div>
+  <div class="muted" style="margin-bottom:14px">Version V20</div>
   <div class="muted" style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Informations techniques</div>
   <p class="muted" style="margin:0">Marée de référence : Lancieux. Fond Plan / Satellite + Litto3D final corrigé ~5 m (affichage eau ~13 m). Calage vertical IGN69 par défaut : 0,00 m.</p>
 </div>
@@ -158,7 +159,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     </div>
     <div id="map"></div>
     <div class="legendbox">
-      <div><span style="display:inline-block;width:11px;height:11px;background:#2f75d8cc;border-radius:3px;margin-right:4px;vertical-align:-1px"></span>eau simulée</div>
+      <div><span style="display:inline-block;width:11px;height:11px;background:#2f75d899;border-radius:3px;margin-right:4px;vertical-align:-1px"></span>eau simulée</div>
       <div><span style="display:inline-block;width:11px;height:11px;background:#c94037;border-radius:3px;margin-right:4px;vertical-align:-1px"></span>mise à l’eau</div>
     </div>
   </div>
@@ -534,12 +535,12 @@ function renderOverlay(levelDm){
   for(let i=0;i<geoSpill.length;i++){
     const q=geoSpill[i],j=i*4;
     if(q===NODATA || q>levelDm){p[j+3]=0;continue}
-    p[j]=47;p[j+1]=117;p[j+2]=216;p[j+3]=204;
+    p[j]=47;p[j+1]=117;p[j+2]=216;p[j+3]=153;
   }
   offCtx.putImageData(img,0,0);
   const url=offCanvas.toDataURL("image/png");
   if(imageOverlay)imageOverlay.setUrl(url);
-  else imageOverlay=L.imageOverlay(url,overlayBounds,{opacity:1,interactive:false}).addTo(map);
+  else imageOverlay=L.imageOverlay(url,overlayBounds,{opacity:1,interactive:false,className:'water-overlay'}).addTo(map);
 }
 
 function drawChart(vals,currentHour,msl,events){
