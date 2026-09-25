@@ -117,8 +117,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .grid>.info-side{grid-column:2;grid-row:2;align-self:start;min-width:0}
 @media(max-width:900px){
   .grid>.spot-card{grid-column:1;grid-row:auto;order:1}
-  .grid>.map-section{grid-column:1;grid-row:auto;order:2}
-  .grid>.info-side{grid-column:1;grid-row:auto;order:3}
+  .grid>.timeline-card{grid-column:1;grid-row:auto;order:2}
+  .grid>.map-section{grid-column:1;grid-row:auto;order:3}
+  .grid>.info-side{grid-column:1;grid-row:auto;order:4}
 }
 
 
@@ -134,7 +135,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   <div class="card"><label for="time">Heure</label><div class="inputwrap"><input id="time" type="time" step="300"></div></div>
 </div>
 
-<div class="card timeline-card">
+<div id="timelineCard" class="card timeline-card">
   <div class="timeline-top">
     <div>
       <div class="muted">Heure de la journée</div>
@@ -154,7 +155,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   <div class="card metric"><span>Prochaine marée</span><strong id="nextVal">—</strong></div>
 </div>
 
-<div class="grid">
+<div id="mainGrid" class="grid">
 <section class="map-section">
   <div class="mapwrap" style="position:relative">
     <div class="map-brand" aria-hidden="true">
@@ -704,6 +705,19 @@ techBtn.addEventListener("click",()=>{
     techBtn.textContent="Données techniques";
   }
 });
+
+const mainGrid=document.getElementById('mainGrid'),timelineCard=document.getElementById('timelineCard'),controls=document.querySelector('.controls');
+function placeTimelineCard(){
+  if(!mainGrid||!timelineCard||!controls)return;
+  if(window.innerWidth<=900){
+    const mapSection=mainGrid.querySelector('.map-section');
+    if(mapSection&&timelineCard.parentElement!==mainGrid)mainGrid.insertBefore(timelineCard,mapSection);
+  }else if(controls.nextElementSibling!==timelineCard){
+    controls.insertAdjacentElement('afterend',timelineCard);
+  }
+}
+window.addEventListener('resize',placeTimelineCard);
+placeTimelineCard();
 
 setCurrentLocalDateTime();
 update();
