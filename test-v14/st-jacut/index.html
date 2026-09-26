@@ -43,12 +43,12 @@ input[type=number],select{width:100%;padding:8px 10px;border:1px solid var(--bor
 .timeline-actions{display:flex;gap:7px;flex-wrap:wrap}
 button.action{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:9px;padding:7px 10px;font:inherit;cursor:pointer}
 button.action.primary{background:var(--accent);color:white;border-color:var(--accent)}
-input[type=range]{width:100%;accent-color:var(--accent)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:32px;background:transparent;touch-action:pan-x}input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:999px;background:rgba(51,122,189,.28)}input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);margin-top:-8px}input[type=range]::-moz-range-track{height:8px;border-radius:999px;background:rgba(51,122,189,.28)}input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25)}
 .timeline-scale{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-top:4px}
-.metrics{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:9px;margin-bottom:14px}
+.metrics{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:7px;margin-bottom:10px}
 @media(max-width:800px){.metrics{grid-template-columns:1fr 1fr}}
-.metric span{font-size:12px;color:var(--muted);display:block}.metric strong{font-size:20px;display:block;margin-top:2px}
-#nextVal{font-size:17px;line-height:1.35}
+.metric{padding:9px 10px;border-radius:12px}.metric span{font-size:11px;color:var(--muted);display:block}.metric strong{font-size:17px;display:block;margin-top:1px}
+#nextVal{font-size:15px;line-height:1.25}
 .grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(250px,.75fr);gap:14px}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
 .mapwrap,.chartwrap{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--card)}
@@ -117,9 +117,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 }
 
 
-.spot-distance-line{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.spot-distance-line .big{display:inline;margin:0}
-.spot-distance-line .muted{display:inline;margin:0}
+.spot-card{padding:10px 11px;border-radius:12px}.spot-card label{font-size:12px}.spot-card select{padding:7px 9px;font-size:14px}.spot-distance-line{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.spot-distance-line .big{display:inline;margin:0;font-size:21px}
+.spot-distance-line .muted{display:inline;margin:0;font-size:12px}
 
 
 .map-timeline-overlay{position:absolute;z-index:520;left:50%;bottom:8px;transform:translateX(-50%);width:min(520px,calc(100% - 130px));background:transparent;backdrop-filter:none;border:0;border-radius:0;padding:0;box-shadow:none;color:#18202a}
@@ -135,7 +135,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .depth-grid{gap:2px}
 .depth-key{font-size:9px;line-height:1.2}
 .depth-key span{width:12px;height:8px;flex:0 0 12px;border:1px solid rgba(0,0,0,.12)}
-@media(max-width:700px){.map-timeline-overlay{width:calc(100% - 16px);bottom:6px}.map-overlay-head{grid-template-columns:1fr 1fr;gap:5px}.map-timeline-overlay .inputwrap{padding:3px 6px}.map-timeline-overlay input[type=date],.map-timeline-overlay input[type=time]{font-size:11px}.overlay-now{padding:3px 8px;font-size:11px}.legendbox.depth-legend{bottom:82px;max-width:102px;padding:5px 6px}.depth-title{font-size:9px}.depth-key{font-size:8px}.depth-key span{width:10px;height:7px;flex-basis:10px}}
+@media(max-width:700px){input[type=range]::-webkit-slider-thumb{width:26px;height:26px;margin-top:-9px}input[type=range]::-moz-range-thumb{width:26px;height:26px}.metric{padding:8px 9px}.spot-card{padding:9px 10px}.map-timeline-overlay{width:calc(100% - 16px);bottom:6px}.map-overlay-head{grid-template-columns:1fr 1fr;gap:5px}.map-timeline-overlay .inputwrap{padding:3px 6px}.map-timeline-overlay input[type=date],.map-timeline-overlay input[type=time]{font-size:11px}.overlay-now{padding:3px 8px;font-size:11px}.legendbox.depth-legend{bottom:82px;max-width:102px;padding:5px 6px}.depth-title{font-size:9px}.depth-key{font-size:8px}.depth-key span{width:10px;height:7px;flex-basis:10px}}
 
 </style>
 </head>
