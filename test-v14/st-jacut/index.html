@@ -125,15 +125,17 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .map-timeline-overlay{position:absolute;z-index:520;left:50%;bottom:8px;transform:translateX(-50%);width:min(520px,calc(100% - 130px));background:transparent;backdrop-filter:none;border:0;border-radius:0;padding:0;box-shadow:none;color:#18202a}
 .map-overlay-head{display:grid;grid-template-columns:1fr 1fr;gap:6px;align-items:center;margin-bottom:4px}
 .overlay-field{display:block;min-width:0}
+.time-inline{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;align-items:center}
 .map-timeline-overlay .inputwrap{padding:4px 8px;border-color:rgba(0,0,0,.14);background:rgba(255,255,255,.78);border-radius:10px;min-width:0}
 .map-timeline-overlay input[type=date],.map-timeline-overlay input[type=time]{color:#18202a;font-size:12px;text-align:center}
+.overlay-now{appearance:none;border:1px solid rgba(0,0,0,.14);background:rgba(255,255,255,.82);color:#18202a;border-radius:10px;padding:4px 10px;font:600 12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer;white-space:nowrap}
 .map-time-readout{display:none}
 .legendbox.depth-legend{left:10px;bottom:74px;max-width:118px;padding:6px 7px;background:rgba(255,255,255,.90)}
 .depth-title{font-weight:800;margin-bottom:3px;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
 .depth-grid{gap:2px}
 .depth-key{font-size:9px;line-height:1.2}
 .depth-key span{width:12px;height:8px;flex:0 0 12px;border:1px solid rgba(0,0,0,.12)}
-@media(max-width:700px){.map-timeline-overlay{width:calc(100% - 16px);bottom:6px}.map-overlay-head{grid-template-columns:1fr 1fr;gap:5px}.map-timeline-overlay .inputwrap{padding:3px 6px}.map-timeline-overlay input[type=date],.map-timeline-overlay input[type=time]{font-size:11px}.legendbox.depth-legend{bottom:82px;max-width:102px;padding:5px 6px}.depth-title{font-size:9px}.depth-key{font-size:8px}.depth-key span{width:10px;height:7px;flex-basis:10px}}
+@media(max-width:700px){.map-timeline-overlay{width:calc(100% - 16px);bottom:6px}.map-overlay-head{grid-template-columns:1fr 1fr;gap:5px}.map-timeline-overlay .inputwrap{padding:3px 6px}.map-timeline-overlay input[type=date],.map-timeline-overlay input[type=time]{font-size:11px}.overlay-now{padding:3px 8px;font-size:11px}.legendbox.depth-legend{bottom:82px;max-width:102px;padding:5px 6px}.depth-title{font-size:9px}.depth-key{font-size:8px}.depth-key span{width:10px;height:7px;flex-basis:10px}}
 
 </style>
 </head>
@@ -159,7 +161,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     <div class="map-timeline-overlay">
       <div class="map-overlay-head">
         <div class="overlay-field"><div class="inputwrap"><input id="date" type="date"></div></div>
-        <div class="overlay-field"><div class="inputwrap"><input id="time" type="time" step="300"></div></div>
+        <div class="overlay-field"><div class="time-inline"><div class="inputwrap"><input id="time" type="time" step="300"></div><button id="nowBtn" class="overlay-now" type="button">Maintenant</button></div></div>
       </div>
       <div id="sliderTime" class="map-time-readout">—</div>
       <input id="timeSlider" type="range" min="0" max="1435" step="5" value="720" aria-label="Heure de la journée">
